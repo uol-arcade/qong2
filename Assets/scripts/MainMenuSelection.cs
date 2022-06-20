@@ -13,6 +13,10 @@ public class MainMenuItem
 
 public class MainMenuSelection : MonoBehaviour
 {
+    public AudioSource source;
+    public AudioClip moveClip;
+    public AudioClip enterClip;
+
     public List<MainMenuItem> items;
     public int index = 0;
 
@@ -43,6 +47,9 @@ public class MainMenuSelection : MonoBehaviour
 
         //Set color of text item to selected colour
         selectedItem.item.color = selectedColor;
+
+        //Play one shot
+        source.PlayOneShot(moveClip);
     }
 
     // Update is called once per frame
@@ -67,6 +74,8 @@ public class MainMenuSelection : MonoBehaviour
     public void BackToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("mainMenu");
+
+        source.PlayOneShot(enterClip);
     }
 
     public void RestartLastGame()
@@ -75,17 +84,31 @@ public class MainMenuSelection : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("singlePlayer");
 
         else if(EndScreen.playMode == EndScreen.PlayMode.Multiplayer)
-            UnityEngine.SceneManagement.SceneManager.LoadScene("twoPlayer");    
+            UnityEngine.SceneManagement.SceneManager.LoadScene("twoPlayer");
+
+        source.PlayOneShot(enterClip);
+    }
+    
+    public void PlayMultiplayer()
+    {
+        Debug.Log("Multiplayer: play");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("twoPlayer");
+
+        source.PlayOneShot(enterClip);
     }
 
     public void PlaySingleplayer()
     {
         Debug.Log("Singleplayer: play");
         UnityEngine.SceneManagement.SceneManager.LoadScene("singlePlayer");
+
+        source.PlayOneShot(enterClip);
     }
 
     public void ExitGame()
     {
+        source.PlayOneShot(enterClip);
+
         Debug.Log("Exit the game");
         Application.Quit(-1);
     }

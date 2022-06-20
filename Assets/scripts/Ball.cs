@@ -25,6 +25,10 @@ public class Ball : MonoBehaviour
 
     public TMPro.TMP_Text scoreText;
 
+    public AudioSource source;
+    public AudioClip clipBallHitWall;
+    public AudioClip clipBallHitPaddle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +57,13 @@ public class Ball : MonoBehaviour
 
         else if(other == rightWall || other == paddle || other == paddle2)
             currentVelocity.x = -currentVelocity.x;
+
+        if(other != paddle && other != paddle2)
+            source.PlayOneShot(clipBallHitWall);
+
+        else
+            source.PlayOneShot(clipBallHitPaddle);
+
 
         currentVelocity += Random.insideUnitCircle * 0.001f;
         currentVelocity *= speedMultiplier;

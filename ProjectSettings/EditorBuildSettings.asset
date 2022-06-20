@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/endGameScene.unity
     guid: 06009111d57a3c04ebffd121ca20605b
+  - enabled: 1
+    path: Assets/Scenes/twoPlayer.unity
+    guid: 6cf839f6973ef72469706cfcb2a757d4
   m_configObjects: {}
