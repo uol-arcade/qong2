@@ -50,7 +50,7 @@ public class EndScreen : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit(-1);
+        ResearchArcade.Navigation.ExitGame();
     }
 
     public void Restart()

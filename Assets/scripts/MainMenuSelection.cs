@@ -110,6 +110,6 @@ public class MainMenuSelection : MonoBehaviour
         source.PlayOneShot(enterClip);
 
         Debug.Log("Exit the game");
-        Application.Quit(-1);
+        ResearchArcade.Navigation.ExitGame();
     }
 }
